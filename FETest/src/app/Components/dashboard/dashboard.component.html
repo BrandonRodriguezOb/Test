@@ -1,0 +1,76 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center">PRODUCTS</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-center">Add Product</h5>
+                    <form [formGroup]="form" (ngSubmit)="SaveProduct()">
+
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text"> 
+                                <i class="fas fa-user"></i>
+                             </span>
+                            <input formControlName="name" type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text"> 
+                                <i class="fa-solid fa-book"></i>
+                             </span>
+                            
+                            <textarea formControlName="desc" type="" class="form-control" placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text"> 
+                                <i class="fa-solid fa-money-bill"></i>
+                             </span>
+                            <input formControlName="price" type="text" class="form-control" placeholder="Price">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-database"></i>&nbsp; Send</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="titulo text-center">Product List</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let product of listProducts">
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.description }}</td>
+                                <td>{{ product.price }}$</td>
+                                <td>
+                                    <i (click)="editProduct(product)" class="far fa-edit text-info " ></i>
+                                </td>
+                                <td>
+                                    <i (click)="deleteProduct(product.id)" class="far fa-trash-alt text-danger "></i>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
